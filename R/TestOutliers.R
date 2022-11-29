@@ -104,7 +104,7 @@ testOutliers <- function(form, data, limit = .001, missing = "None", otherVar = 
      del <- apply(dfb[,-1], MARGIN = 1,
                  FUN = function(x) {return(any(abs(x)>thresh))})
      newData <- data
-     newData[!del, ] <- NA
+     newData[del, ] <- NA
      return(newData)
 
   }
