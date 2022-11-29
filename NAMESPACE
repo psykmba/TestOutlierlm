@@ -3,5 +3,6 @@
 S3method(Compare,testOutlier)
 S3method(plot,testOutlier)
 S3method(summary,testOutlier)
+export(Compare)
 export(getData.testOutlier)
 export(testOutliers)

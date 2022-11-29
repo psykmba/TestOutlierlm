@@ -217,10 +217,11 @@ testOutliers <- function(form, data, limit = .001, missing = "None", otherVar = 
 #' summary
 #'
 #' @param object An object of type testOutliers
+#' @param ... Not used now
 #' This function prints summary of all lm models with fixed outliers
 #' @return nothing
 #' @export
-summary.testOutlier <- function(object)
+summary.testOutlier <- function(object, ...)
 {
   AddN <- function(coeff, N)
   {
@@ -274,11 +275,12 @@ getData.testOutlier <- function(object, data = "?")
 
 #' Plot
 #' This function plots outlier diagnostics for the model
-#' @param An object of type testOutliers
+#' @param x object of type testOutliers
+#' @param ... Not used now
 #'
 #' @return Nothing
 #' @export
-plot.testOutlier <- function(object)
+plot.testOutlier <- function(x, ...)
 {
   PlotInfluence <- function(outliers, limit, name)
   {
@@ -287,19 +289,25 @@ plot.testOutlier <- function(object)
     text(x=1:length(outliers)+1, y=outliers, labels=ifelse(limit, names(outliers),""), col="red")  # add labels
 
   }
-  print(olsrr::ols_plot_dfbetas(object$Results))
-  print(olsrr::ols_plot_cooksd_chart(object$Results))
-  print(olsrr::ols_plot_diagnostics(object$Results))
-  print(olsrr::ols_test_breusch_pagan(object$Results))
-  print(olsrr::ols_test_normality(object$Results))
+  print(olsrr::ols_plot_dfbetas(x$Results))
+  print(olsrr::ols_plot_cooksd_chart(x$Results))
+  print(olsrr::ols_plot_diagnostics(x$Results))
+  print(olsrr::ols_test_breusch_pagan(x$Results))
+  print(olsrr::ols_test_normality(x$Results))
 }
 
 #' Compare datafiles
 #'
 #' @param object An object of type testOutliers
-#' @param what
+#' @param what A dataframe to compare
 #'
 #' @return either names or nothing
+#' @export
+Compare <- function(object, what = "DataRosner")
+{
+  UseMethod("Compare", object)
+}
+
 #' @export
 Compare.testOutlier <- function(object, what="DataRosner")
 {

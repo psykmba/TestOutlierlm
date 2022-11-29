@@ -5,10 +5,12 @@
 \title{Plot
 This function plots outlier diagnostics for the model}
 \usage{
-\method{plot}{testOutlier}(object)
+\method{plot}{testOutlier}(x, ...)
 }
 \arguments{
-\item{An}{object of type testOutliers}
+\item{x}{object of type testOutliers}
+
+\item{...}{Not used now}
 }
 \value{
 Nothing

@@ -4,10 +4,12 @@
 \alias{summary.testOutlier}
 \title{summary}
 \usage{
-\method{summary}{testOutlier}(object)
+\method{summary}{testOutlier}(object, ...)
 }
 \arguments{
-\item{object}{An object of type testOutliers
+\item{object}{An object of type testOutliers}
+
+\item{...}{Not used now
 This function prints summary of all lm models with fixed outliers}
 }
 \value{
