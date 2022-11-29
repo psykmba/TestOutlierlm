@@ -214,14 +214,14 @@ testOutliers <- function(form, data, limit = .001, missing = "None", otherVar = 
 
 }
 
-#' summary
+#' summaryTestOutlier
 #'
 #' @param object An object of type testOutliers
 #' @param ... Not used now
 #' This function prints summary of all lm models with fixed outliers
 #' @return nothing
 #' @export
-summary.testOutlier <- function(object, ...)
+summaryTestOutlier <- function(object, ...)
 {
   AddN <- function(coeff, N)
   {
@@ -256,7 +256,7 @@ summary.testOutlier <- function(object, ...)
   print(AddN(object$robustLM[["coefficients"]], length(object$ordinaryLM$residuals )))
 }
 
-#' getData
+#' getDataTestOutlier
 #'
 #' @param object  An object of type testOutliers
 #' @param data A name of the data that should be returned. If data = '?' the function
@@ -265,7 +265,7 @@ summary.testOutlier <- function(object, ...)
 #'
 #' @return a dataframe handled by a specific method
 #' @export
-getData.testOutlier <- function(object, data = "?")
+getDataTestOutlier <- function(object, data = "?")
 {
   if (data == "?")
     print(names(object))
@@ -273,14 +273,14 @@ getData.testOutlier <- function(object, data = "?")
     return(as.data.frame(object[[data]]))
 }
 
-#' Plot
+#' plotTestOutlier
 #' This function plots outlier diagnostics for the model
 #' @param x object of type testOutliers
 #' @param ... Not used now
 #'
 #' @return Nothing
 #' @export
-plot.testOutlier <- function(x, ...)
+plotTestOutlier <- function(x, ...)
 {
   PlotInfluence <- function(outliers, limit, name)
   {
